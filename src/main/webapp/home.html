@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div data-scroll data-scroll-speed="-5" id="page1">
+            <nav>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeCZwejiK-YEX63wGHbvRxlpll9aC2fm2ZcwG2K3JAjvwdP3V8dKigX53vbgFqk6dCgh8&usqp=CAU" alt="">
+                <h2>Creamy Cravings</h2>
+                <div id="right-nav">
+                   
+                    <div class="navbar">
+                        <a href="#main"><button>Home</button></a>
+                        <a href="#page2"><button>Products</button></a>
+                        <a href="#page8"><button>About</button></a>
+                        <a href="#page14"><button>Contact</button></a>
+                        <a href="#" ><button onclick="toggleDropdown()" >user</button></a>
+                            <div id="dropdownContent" >
+                              <a><button onclick="redirectToUserServlet()">My Account</button></a>
+
+                              <a href="index.html"><button>Log-Out</button></a>
+                            </div>
+                        </div>
+                </div>
+            </nav>
+            <div class="bottom-page1">
+                <h1>Delicious   <br>Icecreams Ever</h1>
+                <div class="bottom-page1-inner">
+                    <h4>Escape to Ice Cream Paradise: <br>Your Unique Scoop awaits</h4>
+                    
+                </div>
+               
+            </div>
+            <video src="assest/icewalpaper.mp4" autoplay loop muted ></video>
+        </div>
+            
+    <div id="page2">
+          <div class="container">
+             <h1 class="heading">IceCreams</h1>
+                <div class="box-container">
+         
+                 <div class="box">
+                     <div class="image">
+                     <img src="https://png.pngtree.com/background/20230520/original/pngtree-four-ice-cream-cones-that-have-chocolate-picture-image_2678006.jpg" alt="">
+                     </div>
+                       <div class="content">
+                         <h3>cone Icecreams</h3> 
+                           
+                       </div>
+                 </div>
+         
+                 <div class="box">
+                      <div class="image">
+                      <img src="https://img.pikbest.com/ai/illus_our/20230423/198fa37c3e4d2b0782c0711e0990f951.jpg!w700wp" alt="">
+                      </div>
+                        <div class="content">
+                          <h3>Scoops</h3> 
+                            
+                        </div>
+                 </div>
+         
+                 <div class="box">
+                      <div class="image">
+                      <img src="https://img.pikbest.com/wp/202344/chocolate-ice-cream-delectable-coated-bar-with-a-variety-of-textures-set-against-rich-brown-background_9921367.jpg!w700wp" alt="">
+                      </div>
+                        <div class="content">
+                          <h3>Bar Icecreams</h3> 
+                            
+                        </div>
+                 </div>
+                 
+                </div>
+                <a href="product1.html" class="load-more">load more </a>
+                <a href="product2.html" class="load-more">load more </a>
+                <a href="product3.html" class="load-more">load more </a>
+           </div>
+           
+        </div>
+           
+           
+       <div id="page7">
+            <div class="page7-cir">
+
+                <div class="page7-cir-inner">
+                    <h2>
+                        Ice sandwiches<br>
+                        Ice cakes<br>
+                        Vegans<br>
+                        Custom sundaes<br>
+                        Toppings,sauces<br>
+                        Novelty treats
+                    </h2>
+                </div>
+                <h1>Fresh Additions</h1>
+
+                <div class="page7-cir2">
+
+                    <div class="page7-cir-inner2">
+                        <h2>Delicious IceCreams<br>
+                        quality Ingredients<br>
+                        Variety of Flavors<br>
+                          Community Focused</h2>
+                     
+                    </div>
+                    <h1 style="transform: rotate(180deg);">&ensp;We Offer&ensp;</h1>
+            </div>
+            
+        </div>
+        <div id="page8">
+            <div class="page8-bottom">
+                <h1>MAGNUM</h1>
+                <button>Experiance Pure in Every Bite</button>
+            </div>
+            <video src="assest/last.mp4"autoplay loop muted></video>
+        </div>
+       
+        <div id="page13">
+            <h1>Become An
+                <br>
+                early one to contact</h1>
+                <button>Stay Connected</button>
+        </div> 
+        <div id="page14">
+            <div class="page14-inner" onclick="redirectTo('https://facebook.com/profile.php?id=100083917142038')">
+                <h1>Facebook</h1>
+                <i class="ri-arrow-right-up-line"></i>
+                <div class="center14"></div>
+            </div>
+            <div class="page14-inner" onclick="redirectTo('https://www.linkedin.com/in/pavan-bn-00690b256/')">
+                <h1>LinkedIn</h1>
+                <i class="ri-arrow-right-up-line"></i>
+                <div class="center14"></div>
+            </div>
+            <div class="page14-inner" onclick="redirectTo('https://instagram.com//pavan_bn.445?gsh=cTlyczVja2xudWk3')">
+                <h1>Instagram</h1>
+                <i class="ri-arrow-right-up-line"></i>
+                <div class="center14"></div>
+            </div>
+        </div>
+        
+</body>
+
+<script>
+
+function redirectTo(link) {
+  if (confirm('Do you want to visit this social media platform?')) {
+      window.location.href = link;
+  }
+}
+
+
+function toggleDropdown() {
+  var dropdownContent = document.getElementById("dropdownContent");
+  if (dropdownContent.style.display === "none") {
+    dropdownContent.style.display = "block";
+  } else {
+    dropdownContent.style.display = "none";
+  }
+}
+function redirectToUserServlet() {
+    console.log("Button clicked"); // Log a message to the console
+    window.location.href = "/creamy_cravings/user"; // Redirect to the UserServlet URL
+    return false; // Prevent default action of the button click
+}
+
+
+</script>
+</html>

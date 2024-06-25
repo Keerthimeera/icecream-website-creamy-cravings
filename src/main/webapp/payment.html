@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Payment</title>
+    <link rel="stylesheet" href="paymentstyle.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>order</h2>
+        <form action="order" method="post"> <!-- Changed action to point to the servlet -->
+            <h4>Account</h4>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="text" name="fullName" placeholder="Full Name" required class="name">
+                    <!-- Add name attribute -->
+                    <i class="fa fa-user icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="number" name="phoneNumber" placeholder="Phone Number" required class="name">
+                    <!-- Add name attribute -->
+                    <i class="fa fa-mobile icon"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="text" name="address" placeholder="Address" required class="name">
+                    <!-- Add name attribute -->
+                    <i class="fa fa-map-marker icon" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="input_group">
+                <div class="input_box">
+                    <input type="text" name="productName" placeholder="Product Name" required class="name"
+                        id="productName">
+                    <!-- Add name attribute -->
+                    <i class="fa fa-shopping-cart icon" aria-hidden="true"></i>
+                </div>
+            </div>
+            <!--Account Information End-->
+
+            <div class="input_group">
+                <div class="Quantity">
+                    <h4>Quantity</h4>&ensp;
+                    <input type="number" id="quantityInput" default value="1" onchange="updateTotalAmount()"
+                        name="quantity"> &emsp;&emsp;&emsp; <!-- Add name attribute -->
+
+                </div>
+            </div>
+
+            <div class="input_group">
+                <div class="input_box">
+                    <h4>Amount of Product</h4>
+                    <input type="number" id="productAmount" name="productAmount" readonly>
+                </div>
+            </div>
+
+            <div class="input_group">
+                <div class="input_box">
+                    <h4>Total Amount</h4>
+                    <input type="number" id="totalAmount" name="totalAmount" readonly>
+                </div>
+            </div>
+<input type="hidden" name="pay" id="paymentMethod" value="">
+
+           <input type="checkbox" name="pay" class="checkbox" id="onlineCheckbox" onclick="handleOrderTypeChange('online')">
+<label for="onlineCheckbox"><span>Online</span></label>
+
+<input type="checkbox" name="pay" class="checkbox" id="codCheckbox" onclick="handleOrderTypeChange('cod')">
+<label for="codCheckbox"><span>Cash on Delivery (COD)</span></label>
+
+
+
+
+
+            <!--Payment Details End-->
+            <div class="submitbtn">
+                <div class="input_group">
+                    <div class="input_box">
+                        <!-- Change type to "submit" -->
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function getQueryParams() {
+            var params = {};
+            var queryString = window.location.search.substring(1);
+            var pairs = queryString.split("&");
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].split("=");
+                params[pair[0]] = decodeURIComponent(pair[1]);
+            }
+            return params;
+        }
+
+
+        function updateTotalAmount() {
+            var quantity = document.getElementById("quantityInput").value;
+            // Ensure quantity is at least 1
+            if (quantity < 1) {
+                quantity = 1;
+                document.getElementById("quantityInput").value = 1;
+            }
+            var queryParams = getQueryParams();
+            var productName = queryParams['product'];
+            var productAmount = parseInt(queryParams['amount']);
+            var totalAmount = productAmount * quantity;
+            document.getElementById("productName").value = productName;
+            document.getElementById("productAmount").value = productAmount;
+            document.getElementById("totalAmount").value = totalAmount;
+        }
+updateTotalAmount();
+function handleOrderTypeChange(pay) {
+    var onlineCheckbox = document.getElementById("onlineCheckbox");
+    var codCheckbox = document.getElementById("codCheckbox");
+    var paymentMethodInput = document.getElementById("paymentMethod");
+
+    if (pay === 'online') {
+        if (onlineCheckbox.checked) {
+            codCheckbox.checked = false;
+            paymentMethodInput.value = 'Online';
+        } else {
+            paymentMethodInput.value = '';
+        }
+    } else if (pay === 'cod') {
+        if (codCheckbox.checked) {
+            onlineCheckbox.checked = false;
+            paymentMethodInput.value = 'COD';
+        } else {
+            paymentMethodInput.value = '';
+        }
+    }
+}
+
+    </script>
+
+</body>
+
+</html>
